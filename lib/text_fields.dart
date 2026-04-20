@@ -8,6 +8,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Text("Welcome Back!",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 25),),
             SizedBox(height: 10,),
             TextField(
+              controller: emailController,
               decoration: InputDecoration(
                 fillColor: Colors.white,
                 filled: true,
@@ -43,6 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(height: 10,),
             TextField(
+              controller: passwordController,
               decoration: InputDecoration(
                   fillColor: Colors.white,
                   filled: true,
@@ -63,7 +67,45 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 45,
               width: double.infinity,
-              child: ElevatedButton(onPressed: (){},
+              child: ElevatedButton(onPressed: (){
+                if(emailController.text.isEmpty){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Email is empty"))
+                  );
+                  return;
+                }
+                if(passwordController.text.isEmpty){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Password is empty"))
+                  );
+                  return;
+                }
+                if(passwordController.text.length < 8){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Password must be more than 8 digits"))
+                  );
+                  return;
+                }
+                showDialog(
+                  barrierDismissible: false,
+                    context: context,
+                  builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text("Thank You!"),
+                        content: Text("Login Successfully"),
+                        actions: [
+                          TextButton(onPressed: (){
+                            Navigator.pop(context);
+                          }, child: Text("Back")),
+                          TextButton(onPressed: (){
+                            Navigator.pop(context);
+                          }, child: Text("Ok")),
+                        ],
+                      );
+
+                  },
+                    );
+              },
                   style: ElevatedButton.styleFrom(
                     elevation: 5,
                     backgroundColor: Colors.blue,
@@ -79,7 +121,74 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Don't have account?"),
-                TextButton(onPressed: (){}, child: Text("Sign Up"))
+                TextButton(onPressed: (){
+                  showModalBottomSheet(
+                    isDismissible: false,
+                      context: context,
+                    builder: (BuildContext context) {
+                        return Container(
+                          color: Colors.grey,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                TextField(
+                                  decoration: InputDecoration(
+                                      fillColor: Colors.white,
+                                      filled: true,
+                                      label: Text("Username"),
+                                      hintText: "Abdullah Rehman",
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(10),
+                                              bottomRight: Radius.circular(10)
+                                          ),
+                                          borderSide: BorderSide.none
+                                      )
+                                  ),
+                                ),
+                                SizedBox(height: 20,),
+                                TextField(
+                                  decoration: InputDecoration(
+                                      fillColor: Colors.white,
+                                      filled: true,
+                                      label: Text("Email"),
+                                      hintText: "abdullah@gmail.com",
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(10),
+                                              bottomRight: Radius.circular(10)
+                                          ),
+                                          borderSide: BorderSide.none
+                                      )
+                                  ),
+                                ),
+                                SizedBox(height: 20,),
+                                TextField(
+                                  decoration: InputDecoration(
+                                      fillColor: Colors.white,
+                                      filled: true,
+                                      label: Text("Password"),
+                                      hintText: "**************",
+                                      border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(10),
+                                              bottomRight: Radius.circular(10)
+                                          ),
+                                          borderSide: BorderSide.none
+                                      )
+                                  ),
+                                ),
+                                ElevatedButton(onPressed: (){
+                                  Navigator.pop(context);
+                                }, child: Text("Close"))
+                              ],
+                            ),
+                          ),
+                        );
+                  },
+                     );
+                }, child: Text("Sign Up"))
               ],
             )
           ],

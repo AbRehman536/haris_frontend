@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:haris_frontend/body.dart';
 import 'package:haris_frontend/images.dart';
+import 'package:haris_frontend/listtile.dart';
+import 'package:haris_frontend/multiple_selection.dart';
+import 'package:haris_frontend/single_selection.dart';
 import 'package:haris_frontend/text_fields.dart';
 
 import 'app_bar.dart';
@@ -35,7 +38,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: LoginScreen(),
+      home: MultipleSelection(),
     );
   }
 }

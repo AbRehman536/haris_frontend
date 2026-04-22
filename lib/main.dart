@@ -3,6 +3,7 @@ import 'package:haris_frontend/body.dart';
 import 'package:haris_frontend/images.dart';
 import 'package:haris_frontend/listtile.dart';
 import 'package:haris_frontend/multiple_selection.dart';
+import 'package:haris_frontend/page_view.dart';
 import 'package:haris_frontend/single_selection.dart';
 import 'package:haris_frontend/text_fields.dart';
 
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: MultipleSelection(),
+      home: PageViewDemo(),
     );
   }
 }

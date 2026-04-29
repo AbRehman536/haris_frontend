@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:haris_frontend/body.dart';
+import 'package:haris_frontend/date_time_picker.dart';
 import 'package:haris_frontend/grid)view/gridView_builder.dart';
 import 'package:haris_frontend/grid)view/gridView_count.dart';
 import 'package:haris_frontend/grid)view/staggered_grid.dart';
@@ -42,7 +43,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: GridViewStaggered(),
+      home: DateTimePickerDemo(),
     );
   }
 }

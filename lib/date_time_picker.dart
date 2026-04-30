@@ -33,7 +33,6 @@ class _DateTimePickerDemoState extends State<DateTimePickerDemo> {
                   });
             });
           }, child: Text("Select Date ")),
-
           Text(selectedTime != null ? selectedTime!.format(context).toString() : "No Time Selected"),
           ElevatedButton(onPressed: (){
             showTimePicker(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:haris_frontend/body.dart';
+import 'package:haris_frontend/bottomBAr.dart';
 import 'package:haris_frontend/date_time_picker.dart';
 import 'package:haris_frontend/grid)view/gridView_builder.dart';
 import 'package:haris_frontend/grid)view/gridView_count.dart';
@@ -9,6 +10,7 @@ import 'package:haris_frontend/listtile.dart';
 import 'package:haris_frontend/multiple_selection.dart';
 import 'package:haris_frontend/page_view.dart';
 import 'package:haris_frontend/single_selection.dart';
+import 'package:haris_frontend/tabBar.dart';
 import 'package:haris_frontend/text_fields.dart';
 
 import 'app_bar.dart';
@@ -41,9 +43,9 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: DateTimePickerDemo(),
+      home: BottombarDemo(),
     );
   }
 }

@@ -9,14 +9,22 @@ import 'package:haris_frontend/images.dart';
 import 'package:haris_frontend/listtile.dart';
 import 'package:haris_frontend/multiple_selection.dart';
 import 'package:haris_frontend/page_view.dart';
+import 'package:haris_frontend/passing_pameters/screen_1.dart';
+import 'package:haris_frontend/provider/screen_a.dart';
+import 'package:haris_frontend/provider/user_provider.dart';
 import 'package:haris_frontend/single_selection.dart';
 import 'package:haris_frontend/tabBar.dart';
 import 'package:haris_frontend/text_fields.dart';
+import 'package:provider/provider.dart';
 
 import 'app_bar.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context)=> UserProvider())
+      ],
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -45,7 +53,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: BottombarDemo(),
+      home: ScreenA(),
     );
   }
 }

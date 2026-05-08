@@ -13,6 +13,7 @@ import 'package:haris_frontend/page_view.dart';
 import 'package:haris_frontend/passing_pameters/screen_1.dart';
 import 'package:haris_frontend/provider/screen_a.dart';
 import 'package:haris_frontend/provider/user_provider.dart';
+import 'package:haris_frontend/settings.dart';
 import 'package:haris_frontend/single_selection.dart';
 import 'package:haris_frontend/tabBar.dart';
 import 'package:haris_frontend/text_fields.dart';
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: GoogleMapDemo(),
+      home: SettingsDemo(),
     );
   }
 }

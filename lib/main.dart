@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:haris_frontend/aimations.dart';
 import 'package:haris_frontend/body.dart';
 import 'package:haris_frontend/bottomBAr.dart';
 import 'package:haris_frontend/date_time_picker.dart';
@@ -13,12 +14,14 @@ import 'package:haris_frontend/page_view.dart';
 import 'package:haris_frontend/passing_pameters/screen_1.dart';
 import 'package:haris_frontend/project_screen.dart';
 import 'package:haris_frontend/provider/screen_a.dart';
+import 'package:haris_frontend/provider/theme_provider.dart';
 import 'package:haris_frontend/provider/user_provider.dart';
 import 'package:haris_frontend/settings.dart';
 import 'package:haris_frontend/single_selection.dart';
 import 'package:haris_frontend/slider.dart';
 import 'package:haris_frontend/tabBar.dart';
 import 'package:haris_frontend/text_fields.dart';
+import 'package:haris_frontend/theme_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'app_bar.dart';
@@ -26,7 +29,8 @@ import 'app_bar.dart';
 void main() {
   runApp(MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=> UserProvider())
+        ChangeNotifierProvider(create: (context)=> UserProvider()),
+        ChangeNotifierProvider(create: (context)=> ThemeProvider()),
       ],
       child: const MyApp()));
 }
@@ -37,27 +41,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: ProjectScreen(),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: themeProvider.themeMode,
+      home: ThemeScreen(),
     );
   }
 }
